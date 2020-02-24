@@ -1,0 +1,43 @@
+{% extends 'base.html.twig'%}
+
+{% block stylesheets %}
+    <style>
+        main{
+            display: inline-block;
+            vertical-align: top;
+            text-align: left;
+            padding: 1em;
+            background-color: #2C3E50;
+            color: white;
+            width: 100vw;
+        }
+
+        main *{
+            margin: 0.5em;
+        }
+
+        .suggestion{
+            float: right;
+            background-color: white;
+            width: 25vw;
+            height: 540px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <main>
+        <section>
+            <aside class="suggestion">
+
+            </aside>
+            <article class="movie">
+                <iframe width="1024" height="540" src="{{ movie.trailer }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h1>{{ movie.name }} | {{ movie.genre }}</h1>
+            </article>
+
+        </section>
+
+    </main>
+
+{% endblock %}

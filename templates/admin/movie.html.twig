@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br>
+    <h1>Movie Creation</h1>
+    {{ form_start(form,{
+        'multipart' : true
+    }) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.genre) }}
+    {{ form_row(form.description,{
+        'required' : false
+    }) }}
+    {{ form_row(form.cinematic) }}
+    {{ form_row(form.trailer) }}
+
+    <br><br>
+    <input type="submit" class="btn btn-primary float-right" value="Create" name="submit"/>
+    {{ form_end(form) }}
+{% endblock %}
