@@ -2,11 +2,12 @@
 
 {% block body %}
     <br>
-    <h1>Movie Creation</h1>
     {{ form_start(form,{
         'multipart' : true
     }) }}
+    <h1>Movie Creation</h1>
     {{ form_row(form.name) }}
+    {{ form_row(form.origin) }}
     {{ form_row(form.genre) }}
     {{ form_row(form.description,{
         'required' : false

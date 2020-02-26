@@ -1,53 +1,66 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <style>
-
-        .advertisement img{
-            height: 50vh;
-            width: 100vw;
-        }
-
-
-        .main {
-            display: inline-block;
-            vertical-align: top;
-            text-align: left;
-            margin: 0;
-            padding: 2em;
-            background-color: #2C3E50;
-            color: white;
-            width: 100vw;
-        }
-
-        .movie {
-            width: 400px;
-            height: 300px;
-            background-color: #2C3E50;
-            font-family: "Calibri Light";
-        }
-
-        .movie img {
-            width: 100%;
-            height: 70%;
-        }
-    </style>
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 {% endblock %}
 {% block body %}
     <div class="advertisement">
-        <img src="https://wallpapershome.com/images/pages/ico_h/22515.jpg"><!-- I'm invisible! yey!-->
+        <iframe class="mySlides" width="100%" height="680px" src="https://www.youtube.com/embed/ndl1W4ltcmg"
+                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
     </div>
-    <div class="main">
-        <div class="us">
-            <h1>Top movies</h1>
-            <br>
-            {% for movie in movies %}
-                <div class="movie">
-                    <a href="{{ path('home.movie', {'id' : movie.id}) }}"><img src="{{ asset(movie.cinematicImage) }}"></a>
-                    <p>{{ movie.name }}</p>
-                    <p>{{ movie.genre }} | {{ movie.origin }}</p>
+    <iframe class="mySlides" width="100%" height="680px" src="https://www.youtube.com/embed/eisKxhjBnZ0" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+    <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+    <main>
+        <section class="movies">
+            <article class="us">
+                <div class="title">
+                    <h1>US movies</h1>
                 </div>
-            {% endfor %}
-        </div>
-    </div>
+                <br>
+                <br>
+                {% for movie in movies %}
+                    {% if movie.origin == 'US' %}
+                    <div class="movie">
+                        <div class="image">
+                            <a href="{{ path('home.movie', {'id' : movie.id}) }}"><img
+                                        src="{{ asset(movie.cinematicImage) }}" alt="This is a movie"></a>
+                        </div>
+                        <div class="description">
+                            <p>{{ movie.name }}</p>
+                            <p>{{ movie.genre }} | {{ movie.origin }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                <button class="btn btn-success btn-lg btn-block" type="button">See all the products &#9655;</button>
+            </article>
+            <article class="vietnam">
+                <div class="title">
+                    <h1>Other movies</h1>
+                </div>
+                <br>
+                <br>
+                {% for movie in movies %}
+                    {% if movie.origin == 'Vietnam' %}
+                        <div class="movie">
+                            <div class="image">
+                                <a href="{{ path('home.movie', {'id' : movie.id}) }}"><img
+                                            src="{{ asset(movie.cinematicImage) }}" alt="This is a movie"></a>
+                            </div>
+                            <div class="description">
+                                <p>{{ movie.name }}</p>
+                                <p>{{ movie.genre }} | {{ movie.origin }}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <button class="btn btn-success btn-lg btn-block" type="button">See all the products &#9655;</button>
+            </article>
+        </section>
+    </main>
+    <script rel="script" src="{{ asset('js/home.js') }}"></script>
 {% endblock %}

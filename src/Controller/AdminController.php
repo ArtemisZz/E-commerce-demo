@@ -65,7 +65,7 @@ class AdminController extends AbstractController
 
             return $this->redirect($this->generateUrl('home.home'));
         }
-        return $this->render('home/movie.html.twig',[
+        return $this->render('admin/movie.html.twig',[
             'form' => $form->createView()
         ]);
     }

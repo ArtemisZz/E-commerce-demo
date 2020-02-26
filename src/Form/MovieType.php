@@ -18,6 +18,7 @@ class MovieType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('origin')
             ->add('genre')
             ->add('description', TextareaType::class)
             ->add('cinematic', FileType::class,[

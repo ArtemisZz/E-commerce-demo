@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Movie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use JMS\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizableInterface;
 
 /**
  * @method Movie|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,6 +21,22 @@ class MovieRepository extends ServiceEntityRepository
         parent::__construct($registry, Movie::class);
     }
 
+    public function transform(Movie $movie, NormalizableInterface $normalizable)
+    {
+        return json_encode($normalizable->normalize($movie));
+    }
+
+    public function transformAll(NormalizableInterface $normalizable)
+    {
+        $movies = $this->findAll();
+        $moviesArray = [];
+
+        foreach ($movies as $movie) {
+            $moviesArray[] = $this->transform($movie,$normalizable);
+        }
+
+        return $moviesArray;
+    }
     // /**
     //  * @return Movie[] Returns an array of Movie objects
     //  */
