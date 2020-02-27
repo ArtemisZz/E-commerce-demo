@@ -16,6 +16,15 @@
     <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
     <main>
         <section class="movies">
+            <form>
+                <input class="float-right" type="text" placeholder="Search" list="movies">
+                <datalist id="movies">
+                    {% for movie in movies %}
+                    <option value="{{ movie.name }}"></option>
+                    {% endfor %}
+                </datalist>
+                <button type="submit" class="float-right">Search</button>
+            </form>
             <article class="us">
                 <div class="title">
                     <h1>US movies</h1>

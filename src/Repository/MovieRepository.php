@@ -21,18 +21,25 @@ class MovieRepository extends ServiceEntityRepository
         parent::__construct($registry, Movie::class);
     }
 
-    public function transform(Movie $movie, NormalizableInterface $normalizable)
+    public function transform(Movie $movie)
     {
-        return json_encode($normalizable->normalize($movie));
+        return [
+            'id' => (int) $movie->getId(),
+            'name' => (string) $movie->getName(),
+            'genre' => (string) $movie->getGenre(),
+            'origin' => (string) $movie->getOrigin(),
+            'image' => (string) $movie->getCinematicImage(),
+            'trailer' => (string) $movie->getTrailer(),
+        ];
     }
 
-    public function transformAll(NormalizableInterface $normalizable)
+    public function transformAll()
     {
         $movies = $this->findAll();
         $moviesArray = [];
 
         foreach ($movies as $movie) {
-            $moviesArray[] = $this->transform($movie,$normalizable);
+            $moviesArray[] = $this->transform($movie);
         }
 
         return $moviesArray;

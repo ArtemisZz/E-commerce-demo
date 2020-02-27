@@ -167,6 +167,21 @@
             "./config/packages/prod/jms_serializer.yaml"
         ]
     },
+    "monolog/monolog": {
+        "version": "1.25.3"
+    },
+    "nelmio/cors-bundle": {
+        "version": "1.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.5",
+            "ref": "6388de23860284db9acce0a7a5d9d13153bcb571"
+        },
+        "files": [
+            "./config/packages/nelmio_cors.yaml"
+        ]
+    },
     "nikic/php-parser": {
         "version": "v4.3.0"
     },
@@ -319,6 +334,23 @@
     },
     "symfony/mime": {
         "version": "v4.4.4"
+    },
+    "symfony/monolog-bridge": {
+        "version": "v4.4.4"
+    },
+    "symfony/monolog-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "877bdb4223245783d00ed1f7429aa7ebc606d914"
+        },
+        "files": [
+            "./config/packages/dev/monolog.yaml",
+            "./config/packages/prod/monolog.yaml",
+            "./config/packages/test/monolog.yaml"
+        ]
     },
     "symfony/options-resolver": {
         "version": "v4.4.4"
